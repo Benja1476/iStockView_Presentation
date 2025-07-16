@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>iStockView - Power BI Project: Advanced Insights</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/parallax/parallax.css">
+
+    <style>
+        /* General Body and Text Styling */
+        .reveal { font-size: 32px; font-family: 'Segoe UI', 'Arial', sans-serif; } 
+        .reveal h1, .reveal h2, .reveal h3 {
+            color: #00bcd4; /* Cyan/Teal for a techy feel */
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.4); /* Subtle glow effect */
+        }
+        .reveal h1 { font-size: 3em; letter-spacing: 2px; }
+        .reveal h2 { font-size: 2em; border-bottom: 3px solid #00bcd4; padding-bottom: 15px; margin-bottom: 40px;} 
+        .reveal h3 { font-size: 1.5em; color: #b2ebf2;} /* Lighter shade for subheadings */
+        .reveal p, .reveal ul li {
+            color: #e0f7fa; /* Light text on dark background */
+            line-height: 1.5;
+            text-align: left;
+            width: 85%; /* Constrain text width for readability */
+            margin: 0 auto; /* Center text block */
+        }
+
+        /* Custom List Styling */
+        .reveal ul {
+            list-style-type: none; /* Remove default bullet */
+            padding-left: 0;
+        }
+        .reveal ul li::before {
+            content: "➤"; /* Custom bullet point */
+            color: #00bcd4;
+            display: inline-block;
+            width: 1.2em;
+            margin-left: -1.2em;
+        }
+        .reveal ul li {
+            margin-bottom: 1em; /* More spacing between list items */
+        }
+        .reveal strong {
+            color: #ffeb3b; /* Yellow for strong highlights */
+        }
+
+        /* Fragment Animations */
+        .reveal .fragment.fade-in { opacity: 0; }
+        .reveal .fragment.grow { transform: scale(0.8); opacity: 0; }
+        .reveal .fragment.fade-in.current-fragment,
+        .reveal .fragment.grow.current-fragment {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth cubic bezier transition */
+        }
+
+        /* Technology List Styling (Pill-shaped, glowing buttons) */
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Spacing between tech buttons */
+            margin-top: 50px;
+        }
+        .tech-list li {
+            background-color: rgba(0, 188, 212, 0.2); /* Semi-transparent background */
+            color: #00bcd4;
+            padding: 12px 25px;
+            border-radius: 30px; /* Highly rounded */
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.3); /* Subtle glow effect */
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            border: 1px solid #00bcd4; /* Border matching glow color */
+        }
+        .tech-list li:hover {
+            transform: translateY(-8px) scale(1.05); /* Lifts and slightly scales on hover */
+            background-color: rgba(0, 188, 212, 0.4);
+            box-shadow: 0 0 25px rgba(0, 188, 212, 0.6); /* More intense glow on hover */
+        }
+        .tech-list li::before { content: none; } /* Remove custom bullet for tech list */
+
+        /* Table of Contents (TOC) Styling */
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .toc-list li {
+            margin-bottom: 25px; /* Spacing between TOC items */
+        }
+        .toc-list a {
+            font-size: 1.8em; 
+            color: #00bcd4; /* TOC link color */
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+            display: inline-block; /* Allows transform effect */
+        }
+        .toc-list a:hover {
+            color: #ffeb3b; /* Yellow on hover for contrast */
+            text-shadow: 0 0 15px #ffeb3b; /* Glowing text on hover */
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+
+        /* Footer Styling */
+        .reveal .footer {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8em;
+            color: #607d8b; /* Muted color for footer */
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section id="title-slide" 
+                     data-background-image="https://benja1476.github.io/iStockView---Power-BI/assets/images/header.png" 
+                     data-background-opacity="0.2" 
+                     data-background-size="contain" 
+                     data-background-position="center 20%">
+                <h1>iStockView</h1>
+                <h3>Power BI Project Insights</h3>
+                <p class="fragment fade-in">An **Intelligent Inventory Ecosystem**</p>
+                <p class="fragment fade-in"><small>Transforming Data into Predictive Action</small></p>
+                <div class="footer">Developed by [Your Name/Organization Name]</div>
+            </section>
+
+            <section id="toc-slide">
+                <h2>สารบัญ (Project Map)</h2>
+                <ul class="toc-list">
+                    <li><a href="#/project-overview" class="fragment grow">1. ภาพรวมและวิสัยทัศน์โครงการ</a></li>
+                    <li><a href="#/key-goals" class="fragment grow">2. เป้าหมายเชิงกลยุทธ์</a></li>
+                    <li><a href="#/design-concepts" class="fragment grow">3. แนวคิดสถาปัตยกรรม</a></li>
+                    <li><a href="#/core-functionalities" class="fragment grow">4. ฟังก์ชันการทำงานหลัก</a></li>
+                    <li><a href="#/technologies-used" class="fragment grow">5. เทคโนโลยีหลัก</a></li>
+                    <li><a href="#/achievements" class="fragment grow">6. ผลลัพธ์แห่งนวัตกรรม</a></li>
+                    <li><a href="#/future-improvements" class="fragment grow">7. แผนการพัฒนาขั้นสูง</a></li>
+                    <li><a href="#/learn-more" class="fragment grow">8. สำรวจเพิ่มเติม</a></li>
+                </ul>
+            </section>
+
+            <section id="project-overview">
+                <h2>1. ภาพรวมและวิสัยทัศน์โครงการ</h2>
+                <p class="fragment fade-in">iStockView คือ **แพลตฟอร์มอัจฉริยะด้านคลังสินค้า** ที่ขับเคลื่อนด้วย Power BI</p>
+                <ul>
+                    <li class="fragment fade-in">เปลี่ยนข้อมูลสต็อกดิบเป็น **ข้อมูลเชิงลึกเชิงรุก**</li>
+                    <li class="fragment fade-in">เป้าหมายหลักคือ **การเพิ่มประสิทธิภาพการใช้เงินทุน** และลดสต็อกส่วนเกิน</li>
+                    <li class="fragment fade-in">ยกระดับ **ความแม่นยำของการพยากรณ์อุปสงค์** และแผนการจัดซื้อ</li>
+                    <li class="fragment fade-in">สร้างระบบ **ตัดสินใจอัตโนมัติ** เพื่อความรวดเร็วและน่าเชื่อถือในทุกสถานการณ์</li>
+                </ul>
+            </section>
+
+            <section id="key-goals">
+                <h2>2. เป้าหมายเชิงกลยุทธ์</h2>
+                <ul>
+                    <li class="fragment grow">ออกแบบ **แดชบอร์ดที่ใช้งานง่ายและปรับแต่งได้** (User-Centric Design)</li>
+                    <li class="fragment grow">พัฒนา **ระบบวิเคราะห์สต็อกอัจฉริยะ** ครอบคลุม DOI, Forecast, และ Cost</li>
+                    <li class="fragment grow">สร้าง **DAX Engine แบบ Microservices** เพื่อความยืดหยุ่นและขยายขนาดได้</li>
+                    <li class="fragment grow">นำเสนอ **การวิเคราะห์เชิงพยากรณ์และแนะนำ** (Prescriptive Analytics) พร้อมระบบแจ้งเตือนอัจฉริยะ</li>
+                </ul>
+            </section>
+
+            <section id="design-concepts">
+                <h2>3. แนวคิดสถาปัตยกรรม</h2>
+                <ul>
+                    <li class="fragment fade-in">**Modular DAX:** การคำนวณที่แยกส่วนและนำกลับมาใช้ใหม่ได้ เพื่อความคล่องตัว</li>
+                    <li class="fragment fade-in">**Actionable Visuals:** การแสดงผลที่เน้นข้อมูลสำคัญพร้อมตัวบ่งชี้ความเสี่ยงทันที</li>
+                    <li class="fragment fade-in">**Advanced Segmentation:** การแบ่งกลุ่มสต็อกด้วย ABC-FSN Matrix และ DOI/Cost Scoring เพื่อการจัดการที่เหนือกว่า</li>
+                    <li class="fragment fade-in">**AI-Powered Forecast Feedback Loop:** กลไกการเรียนรู้และปรับปรุงการพยากรณ์อัตโนมัติ</li>
+                </ul>
+            </section>
+
+            <section id="core-functionalities">
+                <h2>4. ฟังก์ชันการทำงานหลัก</h2>
+                <ul>
+                    <li class="fragment fade-in">**Intelligent Segmentation:** การจัดหมวดหมู่สินค้าแบบไดนามิก</li>
+                    <li class="fragment fade-in">**Real-time DOI Analysis:** วิเคราะห์ Days of Inventory ทันที</li>
+                    <li class="fragment fade-in">**Predictive Forecast Accuracy:** วัดและปรับปรุงความแม่นยำของการพยากรณ์ล่วงหน้า</li>
+                    <li class="fragment fade-in">**Dynamic Risk Scoring Model:** ประเมินความเสี่ยงสต็อกแบบปรับเปลี่ยนตามสถานการณ์</li>
+                    <li class="fragment fade-in">**Proactive Opportunity & Status Flags:** การแจ้งเตือนโอกาสและสถานะสินค้าแบบเชิงรุก</li>
+                </ul>
+            </section>
+
+            <section id="technologies-used">
+                <h2>5. เทคโนโลยีหลัก</h2>
+                <ul class="tech-list">
+                    <li class="fragment grow">Power BI</li>
+                    <li class="fragment grow">Power Query</li>
+                    <li class="fragment grow">DAX (Data Analysis Expressions)</li>
+                    <li class="fragment grow">GitHub (Version Control)</li>
+                    <li class="fragment grow">DAX Studio (Performance Tuning)</li>
+                </ul>
+            </section>
+
+            <section id="achievements">
+                <h2>6. ผลลัพธ์แห่งนวัตกรรม</h2>
+                <ul>
+                    <li class="fragment fade-in">**ลดเงินทุนที่จมอยู่:** เห็นผลประหยัด <strong class="fragment grow">อย่างมีนัยสำคัญ</strong> ในระยะเวลาอันสั้น</li>
+                    <li class="fragment fade-in">**ลดเวลาวิเคราะห์:** ลดกระบวนการวิเคราะห์รายเดือนลง <strong class="fragment grow">มากกว่า 70%</strong></li>
+                    <li class="fragment fade-in">**ความแม่นยำการจัดซื้อ:** เพิ่มความแม่นยำของแผนการจัดซื้อสู่ระดับ <strong class="fragment grow">มากกว่า 95%</strong></li>
+                </ul>
+            </section>
+
+            <section id="future-improvements">
+                <h2>7. แผนการพัฒนาขั้นสูง</h2>
+                <ul>
+                    <li class="fragment fade-in">บูรณาการ **Power Automate AI** เพื่อระบบแจ้งเตือนและการทำงานอัตโนมัติขั้นสูง</li>
+                    <li class="fragment fade-in">ขยายการรองรับ **Multi-language AI Translation** เพื่อรองรับการใช้งานระดับโลก</li>
+                    <li class="fragment fade-in">พัฒนา **Warehouse Layout Optimization Heatmap** ที่ขับเคลื่อนด้วย AI</li>
+                    <li class="fragment fade-in">เพิ่ม **Predictive Demand Forecasting Module** ที่ใช้ Machine Learning</li>
+                </ul>
+            </section>
+
+            <section id="learn-more">
+                <h2>8. สำรวจเพิ่มเติม</h2>
+                <p class="fragment fade-in">ค้นพบศักยภาพเต็มรูปแบบของ iStockView และนวัตกรรมของเราได้ที่:</p>
+                <p class="fragment grow"><a href="https://benja1476.github.io/iStockView---Power-BI/" target="_blank" style="color:#ffeb3b; text-shadow: 0 0 10px #ffeb3b;">benja1476.github.io/iStockView---Power-BI/</a></p>
+                <div class="footer fragment fade-in">Thank you for your valuable time and interest.</div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/parallax/parallax.min.js"></script> 
+    <script>
+        // Initialize Reveal.js with desired settings
+        Reveal.initialize({
+            controls: true,     // Show on-screen navigation controls
+            progress: true,     // Show progress bar
+            center: true,       // Center slides vertically
+            hash: true,         // Enable URL hashes for direct slide linking (#/slide-id)
+            transition: 'slide',// Slide transition style (e.g., 'slide', 'fade', 'convex', 'concave')
+            fragments: true,    // Enable fragment animations (text appearing piece by piece)
+            
+            // Add all necessary plugins
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealParallax ]
+        });
+    </script>
+</body>
+</html>
